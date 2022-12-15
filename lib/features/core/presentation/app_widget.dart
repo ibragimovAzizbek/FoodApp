@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
@@ -46,16 +47,21 @@ class AppWidget extends HookConsumerWidget {
 
     final router = ref.watch(routerProvider);
 
-    return MaterialApp.router(
-      routeInformationProvider: router.routeInformationProvider,
-      routeInformationParser: router.routeInformationParser,
-      routerDelegate: router.routerDelegate,
-      title: Strings.appName,
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      theme: Themes.lightTheme(context),
-      darkTheme: Themes.darkTheme(context),
-      themeMode: ThemeMode.light,
-    );
+    return ScreenUtilInit(
+        designSize: const Size(360, 690),
+        minTextAdapt: true,
+        builder: (context, child) {
+          return MaterialApp.router(
+            routeInformationProvider: router.routeInformationProvider,
+            routeInformationParser: router.routeInformationParser,
+            routerDelegate: router.routerDelegate,
+            title: Strings.appName,
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            theme: Themes.lightTheme(context),
+            darkTheme: Themes.darkTheme(context),
+            themeMode: ThemeMode.light,
+          );
+        });
   }
 }
