@@ -11,7 +11,7 @@ part 'user_dto.g.dart';
 class UserDTO with _$UserDTO {
   const factory UserDTO({
     required String id,
-    required String email,
+    required String phoneNumber,
     @JsonKey(name: 'token') required String userToken,
   }) = _UserDTO;
 
@@ -20,7 +20,7 @@ class UserDTO with _$UserDTO {
   factory UserDTO.fromDomain(User _) {
     return UserDTO(
       id: _.id.getOrCrash(),
-      email: _.email.getOrCrash(),
+      phoneNumber: _.phoneNumber.getOrCrash(),
       userToken: _.userToken.getOrCrash(),
     );
   }
@@ -31,7 +31,7 @@ class UserDTO with _$UserDTO {
   User toDomain() {
     return User(
       id: UniqueId(id),
-      email: Email(email),
+      phoneNumber: PhoneNumber(phoneNumber),
       userToken: UserToken(userToken),
     );
   }

@@ -9,7 +9,7 @@ part 'user.freezed.dart';
 class User with _$User {
   const factory User({
     required UniqueId id,
-    required Email email,
+    required PhoneNumber phoneNumber,
     required UserToken userToken,
   }) = _User;
 }

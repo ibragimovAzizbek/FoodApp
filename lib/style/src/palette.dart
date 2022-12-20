@@ -78,40 +78,40 @@ class AppTextStyle {
   }) =>
       TextStyle(
         letterSpacing: 1,
-        fontFamily: "SF",
+        fontFamily: 'SF',
         color: color,
         fontSize: size,
         fontWeight: fontWeight,
       );
 
   static TextStyle title = TextStyle(
-      fontFamily: "SF",
+      fontFamily: 'SF',
       letterSpacing: 1,
       color: Colors.black,
       fontSize: 23.sp,
       fontWeight: FontWeight.w700);
   static TextStyle subTitle = TextStyle(
-      fontFamily: "SF",
+      fontFamily: 'SF',
       letterSpacing: 1,
       color: Colors.black.withOpacity(0.38),
       fontSize: 17.sp,
       fontWeight: FontWeight.w400);
 
   static TextStyle styleSeventyF = TextStyle(
-      fontFamily: "SF",
+      fontFamily: 'SF',
       letterSpacing: 1,
       color: Colors.black,
       fontSize: 17.sp,
       fontWeight: FontWeight.w500);
   static TextStyle location = TextStyle(
-      fontFamily: "SF",
+      fontFamily: 'SF',
       letterSpacing: 1,
       color: Colors.black,
       fontSize: 15.sp,
       fontWeight: FontWeight.w500);
   static TextStyle subLoc = TextStyle(
       letterSpacing: 1,
-      fontFamily: "SF",
+      fontFamily: 'SF',
       color: Colors.black,
       fontSize: 17.sp,
       fontWeight: FontWeight.w600);

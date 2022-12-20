@@ -31,16 +31,43 @@ class AuthRepository {
     return clearCredentialsStorage();
   }
 
+  Future<Either<AuthFailure, Unit>> signInWithPhoneNumber({
+    required PhoneNumber phoneNumber,
+  }) async {
+    try {
+      final phoneNumberStr = phoneNumber.getOrCrash();
+
+      final authResponse = await _remoteService.signInWithPhone(
+        phoneNumber: phoneNumberStr,
+      );
+
+      return authResponse.when(
+        withToken: (token) async {
+          await _credentialsStorage.save(token);
+          return right(unit);
+        },
+        failure: (errorCode, message) => left(AuthFailure.server(
+          errorCode,
+          message,
+        )),
+      );
+    } on RestApiException catch (e) {
+      return left(AuthFailure.server(e.errorCode));
+    } on NoConnectionException {
+      return left(const AuthFailure.noConnection());
+    }
+  }
+
   Future<Either<AuthFailure, Unit>> signInWithEmailAndPassword({
-    required Email email,
+    // required Email email,
     required Password password,
   }) async {
     try {
-      final emailStr = email.getOrCrash();
+      // final emailStr = email.getOrCrash();
       final passwordStr = password.getOrCrash();
 
       final authResponse = await _remoteService.signIn(
-        email: emailStr,
+        //  email: emailStr,
         password: passwordStr,
       );
 

@@ -3,7 +3,7 @@ part of 'sign_in_form_notifier.dart';
 @freezed
 class SignInFormState with _$SignInFormState {
   const factory SignInFormState({
-    required Email email,
+    required PhoneNumber phoneNumber,
     required Password password,
     required bool showErrorMessages,
     required bool isSubmitting,
@@ -11,7 +11,7 @@ class SignInFormState with _$SignInFormState {
   }) = _SignInFormState;
 
   factory SignInFormState.initial() => SignInFormState(
-        email: Email(''),
+        phoneNumber: PhoneNumber(''),
         password: Password(''),
         showErrorMessages: false,
         isSubmitting: false,

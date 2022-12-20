@@ -4,14 +4,14 @@ import '../../../utils/value_validators.dart';
 import '../../core/domain/failures.dart';
 import '../../core/domain/value_objects.dart';
 
-class Email extends ValueObject<String> {
-  factory Email(String input) {
-    return Email._(
-      validateStringNotEmpty(input).flatMap(validateEmail),
+class PhoneNumber extends ValueObject<String> {
+  factory PhoneNumber(String input) {
+    return PhoneNumber._(
+      validateStringNotEmpty(input).flatMap(validatePhoneNumber),
     );
   }
 
-  const Email._(this.value);
+  const PhoneNumber._(this.value);
 
   @override
   final Either<ValueFailure<String>, String> value;

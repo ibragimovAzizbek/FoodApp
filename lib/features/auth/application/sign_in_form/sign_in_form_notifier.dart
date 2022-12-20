@@ -15,12 +15,12 @@ class SignInFormNotifier extends StateNotifier<SignInFormState> {
 
   final AuthRepository _repository;
 
-  void changeEmail(String emailStr) {
-    state = state.copyWith(
-      email: Email(emailStr),
-      failureOrSuccessOption: none(),
-    );
-  }
+  // void changeEmail(String emailStr) {
+  //   state = state.copyWith(
+  //     email: Email(emailStr),
+  //     failureOrSuccessOption: none(),
+  //   );
+  // }
 
   void changePassword(String passwordStr) {
     state = state.copyWith(
@@ -29,19 +29,46 @@ class SignInFormNotifier extends StateNotifier<SignInFormState> {
     );
   }
 
-  Future<void> signInWithEmailAndPassword() async {
+  void changePhoneNumber(String phoneNumber) {
+    state = state.copyWith(
+      phoneNumber: PhoneNumber(phoneNumber),
+      failureOrSuccessOption: none(),
+    );
+  }
+
+  // Future<void> signInWithEmailAndPassword() async {
+  //   Either<AuthFailure, Unit>? signInFailureOrSuccess;
+
+  //   if (isValid) {
+  //     state = state.copyWith(
+  //       isSubmitting: true,
+  //       failureOrSuccessOption: none(),
+  //     );
+
+  //     signInFailureOrSuccess = await _repository.signInWithEmailAndPassword(
+  //       email: state.email,
+  //       password: state.password,
+  //     );
+  //   }
+
+  //   state = state.copyWith(
+  //     isSubmitting: false,
+  //     showErrorMessages: true,
+  //     failureOrSuccessOption: optionOf(signInFailureOrSuccess),
+  //   );
+  // }
+
+  Future<void> signInWithPhoneNumber() async {
     Either<AuthFailure, Unit>? signInFailureOrSuccess;
 
-    if (isValid) {
+    if (isValidNumber) {
       state = state.copyWith(
         isSubmitting: true,
         failureOrSuccessOption: none(),
       );
 
-      signInFailureOrSuccess = await _repository.signInWithEmailAndPassword(
-        email: state.email,
-        password: state.password,
-      );
+      signInFailureOrSuccess = await _repository.signInWithPhoneNumber(
+          phoneNumber: state.phoneNumber);
     }
 
     state = state.copyWith(
@@ -51,10 +78,18 @@ class SignInFormNotifier extends StateNotifier<SignInFormState> {
     );
   }
 
-  bool get isValid {
+  // bool get isValid {
+  //   final values = [
+  //     state.email,
+  //     state.password,
+  //   ];
+
+  //   return Validator.validate(values);
+  // }
+
+  bool get isValidNumber {
     final values = [
-      state.email,
-      state.password,
+      state.phoneNumber,
     ];
 
     return Validator.validate(values);

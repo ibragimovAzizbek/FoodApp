@@ -1,5 +1,7 @@
+import 'package:FoodApp/features/core/application/routes/route_names.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../l10n/l10n.dart';
@@ -7,7 +9,7 @@ import '../../core/presentation/widgets/alert_helper.dart';
 import '../../core/presentation/widgets/loading_overlay.dart';
 import '../domain/auth_failure.dart';
 import '../shared/providers.dart';
-import 'widgets/sign_in_scaffold.dart';
+import 'widgets/sign_in_main.dart';
 
 class SignInPage extends HookConsumerWidget {
   const SignInPage({super.key});
@@ -44,7 +46,7 @@ class SignInPage extends HookConsumerWidget {
 
     return Stack(
       children: [
-        const SignInScaffold(),
+        SignInMain(),
         LoadingOverlay(isLoading: isSubmitting),
       ],
     );

@@ -48,7 +48,6 @@ class AppWidget extends HookConsumerWidget {
     final router = ref.watch(routerProvider);
 
     return ScreenUtilInit(
-        designSize: const Size(360, 690),
         minTextAdapt: true,
         builder: (context, child) {
           return MaterialApp.router(
